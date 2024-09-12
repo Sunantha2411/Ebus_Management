@@ -1,4 +1,4 @@
-# Bus Management System
+# E-Bus Management System
 
 This is a web-based Bus Management System built using Flask and Firebase Firestore for real-time database storage. The system has different user roles, including **admin**, **driver**, and **user**, and allows drivers to post bus information, users to view the information, and admins to manage the system.
 
