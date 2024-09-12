@@ -1,81 +1,72 @@
-eBus Management System
-Overview
-The eBus Management System is a web-based application designed to simplify the management of bus transportation services. It offers an admin dashboard for managing bus schedules and driver assignments, a driver dashboard for posting bus information, and a user dashboard for passengers. The project leverages Flask for backend development and Firebase Firestore for real-time database management.
+# Bus Management System
 
-Features
-Admin Dashboard: Manage users, view bus information, and oversee operations.
-Driver Dashboard: Post bus information such as bus number, type, and contact details.
-User Dashboard: View and manage personal account details.
-Authentication: User registration and login functionalities with role-based access (admin, driver, user).
-Real-time Database: Store and retrieve data in Firestore.
-Session Management: Handle user sessions to manage roles and actions.
-Error Logging: Logs errors and user activities for tracking purposes.
-Technologies Used
-Flask: Python web framework for the backend.
-Firebase:
-Firestore for real-time database management.
-Firebase Authentication for user registration and login.
-HTML/CSS: For rendering frontend templates.
-Logging: Used to track system errors and user activities.
-Installation
-Prerequisites
-Python 3.x installed.
+This is a web-based Bus Management System built using Flask and Firebase Firestore for real-time database storage. The system has different user roles, including **admin**, **driver**, and **user**, and allows drivers to post bus information, users to view the information, and admins to manage the system.
 
-Flask installed (pip install Flask).
+## Features
+- **User Registration**: Register a new user with an email and password.
+- **User Login**: Log in to the system based on user role (admin, driver, user).
+- **User Roles**: Depending on the role, users are redirected to respective dashboards.
+  - **Admin Dashboard**: Admins can manage the system.
+  - **Driver Dashboard**: Drivers can post bus information.
+  - **User Dashboard**: Users can view relevant information.
+- **Post Bus Info**: Drivers can post bus information like bus number, bus type, and contact details.
 
-Firebase Admin SDK:
+## Technology Stack
+- **Backend**: Flask (Python)
+- **Database**: Firebase Firestore
+- **Authentication**: Firebase Authentication
+- **Frontend**: HTML, CSS (Flask templates)
+- **Logging**: Python's built-in logging module
 
-bash
-Copy code
-pip install firebase-admin
-Create a Firebase project and download your serviceAccountKey.json file. Save it as firebase_admin_config.json in your project directory.
+## Installation
 
-Steps
-Clone the repository:
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/bus-management-system.git
+    cd bus-management-system
+    ```
 
-bash
-Copy code
-git clone https://github.com/your-username/eBus-Management-System.git
-cd eBus-Management-System
-Install dependencies:
+2. Set up a virtual environment (optional but recommended):
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate  # For Linux/macOS
+    venv\Scripts\activate  # For Windows
+    ```
 
-bash
-Copy code
-pip install -r requirements.txt
-Replace 'your_secret_key' in app.secret_key with a real secret key for production environments.
+3. Install required dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Replace 'firebase_admin_config.json' with the path to your Firebase Admin SDK configuration file.
+4. Set up Firebase:
+    - Create a Firebase project at [Firebase Console](https://console.firebase.google.com/).
+    - Enable Firebase Authentication and Firestore in the project.
+    - Download the `firebase_admin_config.json` service account key file and place it in the root directory of the project.
 
-Run the application:
+5. Set a secret key for Flask in the `app.py` file:
+    ```python
+    app.secret_key = 'your_secret_key'
+    ```
 
-bash
-Copy code
-python app.py
-The application will be accessible at http://127.0.0.1:5001.
+6. Run the Flask application:
+    ```bash
+    python app.py
+    ```
 
-Firebase Setup
-Set up a Firebase project and Firestore database.
-In Firebase Console:
-Enable Firestore and create a database.
-Set up Firebase Authentication to manage users.
-Add the required roles (admin, driver, user) when registering users.
-Usage
-Registration: New users can register with an email, password, and role (admin, driver, or user).
-Login: Users can log in using their credentials. Based on their role, they are redirected to their respective dashboards.
-Admin Dashboard: Admins can manage the system, view user data, and monitor buses.
-Driver Dashboard: Drivers can post bus information such as bus number, type, and contact details.
-User Dashboard: Users can view and manage their account information.
-Project Structure
-graphql
-Copy code
-.
-├── app.py                  # Main Flask application file
-├── templates/              # HTML templates for rendering pages
-├── firebase_admin_config.json # Firebase Admin SDK credentials file
-├── static/                 # Static files like CSS and JavaScript
-├── app.log                 # Log file for error and activity logging
-└── README.md               # Project readme file
-License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+7. Access the app in your browser at `http://127.0.0.1:5001`.
 
-This README.md should give clear instructions on how to set up, run, and contribute to the project. Let me know if you need any other modifications!
+## File Structure
+```bash
+├── app.py                  # Main Flask app
+├── templates/
+│   ├── index.html           # Home page template
+│   ├── admin_dashboard.html # Admin dashboard template
+│   ├── driver_dashboard.html# Driver dashboard template
+│   ├── user_dashboard.html  # User dashboard template
+│   ├── register.html        # User registration page template
+│   ├── login.html           # User login page template
+│   ├── post_bus_info.html   # Driver post bus information page template
+├── firebase_admin_config.json # Firebase service account key (not included in repo)
+├── requirements.txt         # Project dependencies
+├── README.md                # Project documentation (this file)
+└── app.log                  # Log file for application
