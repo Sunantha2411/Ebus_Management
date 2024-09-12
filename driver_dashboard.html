@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Driver Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Driver Dashboard</h2>
+        <p>Welcome to your dashboard!</p>
+        <a href="{{ url_for('post_bus_info') }}">Post Bus Information</a>
+        <a href="{{ url_for('index') }}">Logout</a>
+    </div>
+</body>
+</html>
